@@ -1,0 +1,120 @@
+.auctions_index {
+    display: grid;
+    padding: 20px;
+    grid-column-gap: 20px;
+    grid-row-gap: 10px;
+    grid-template-columns: 200px auto 150px;
+}
+.side_bar {
+    font-size: 20px;
+    padding: 20px;
+    text-align: center;
+}
+.index_auction_item{
+    background-color: white;
+    font-size: 16px;
+    padding: 20px;
+    text-align: center;
+    border-radius: 24px;
+    border: 1px solid rgba(186,187,241,0.61);
+}
+.index_auction_item:hover{
+    border-left: 8px blue;
+    box-shadow: 0 14px 12px rgba(180,200,200,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.auctions_grid{
+    display: grid;
+    grid-column-gap: 5px;
+    grid-row-gap: 10px;
+    grid-template-columns: 288px 288px 288px;
+    grid-template-rows: auto;
+}
+.auction_image{
+    width:200px;
+    height:200px;
+}
+#user{
+    text-align: right;
+}
+#login_logout_register{
+    text-align: right;
+}
+#head_container{
+    display: grid;
+    padding: 10px;
+    grid-column-gap: 10px;
+    grid-row-gap: 2px;
+    grid-template-columns: 800px auto;
+}
+.head_column{
+    padding: 2px;
+}
+.page_grid {
+    display: grid;
+    padding: 10px;
+    padding-left: 20px;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    grid-template-columns: 400px 400px auto;
+}
+.page_auction_image{
+    width:400px;
+    height:400px;
+}
+.auction_info{
+    padding: 10px;
+}
+.auction_creator_paragraph{
+    position: absolute;
+    bottom: 0;
+}
+.page_coments_grid{
+    display: grid;
+    grid-template-columns: 400px auto;
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+}
+.current_coments{
+    padding: 20px;
+}
+.place_coment{
+    padding: 20px;
+}
+.creation_form{
+    padding: 20px;
+    border-radius: 24px;
+    border: 1px solid rgba(186,187,241,0.61);
+    width:400px;
+    height:500px;
+}
+.creation_separate_items{
+    display: grid;
+    grid-column-gap: 30px;
+    grid-template-columns: 170px auto;
+}
+.creation_item{
+    padding 5px;
+}
+.categories{
+    padding: 20px;
+    border-radius: 24px;
+    border: 1px solid rgba(186,187,241,0.61);
+    width:200px;
+    height:280px;
+}
+.login{
+    padding: 20px;
+    border-radius: 24px;
+    border: 1px solid rgba(186,187,241,0.61);
+    width:320px;
+    height:260px;
+    margin: auto;
+}
+.register{
+    padding: 20px;
+    border-radius: 24px;
+    border: 1px solid rgba(186,187,241,0.61);
+    width:400px;
+    height:360px;
+    margin: auto;
+}

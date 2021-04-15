@@ -1,0 +1,62 @@
+<!DOCTYPE html> 
+<html lang="en">
+
+    <head>
+
+        <title>Advanced Search</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<style>
+		a[href="search.html"]{margin-left:1100px; color:black;font-family: Google Sans,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;}
+		a[href="search.html"]:hover{color:black;}
+		body{font-family:arial,sans-serif}
+		#top {background-color: rgba(241,241,241); margin: 0px; padding-right: 10px; padding-left: 0px;}
+		#intro{text-align: left; padding-top:20px; padding-left:40px; padding-bottom:10px; color: rgba(222,78,69); font-family: arial,sans-serif; font-size:20px}
+		#image{width:120px; heigh:50px; padding:15px;}
+		#box1{margin:40px;}
+		#grid{display:grid; grid-column-gap:15px; grid-row-gap:15px; grid-template-columns: 200px 500px;}
+		.grid-item{padding:5px;}
+		#grid1{display:grid; grid-row-gap:10px; grid-template-columns: 200px; text-align: left; color: black; font-size:14px}
+		.grid-item{}
+		#grid2{display:grid; grid-row-gap:10px; grid-template-columns: 400px;}
+		.grid-item{}
+		#grid3{display:grid; grid-row-gap:10px; grid-template-columns: 400px;}
+		.grid-item{}
+		#find{font-size:16px}
+		form{text-align:center;align-items: center;}
+		#questionall{border-radius:0px; width:580px;}
+		#questionexact{border-radius:0px; width:580px;}
+		#questionany{border-radius:0px; width:580px;}
+		#questionnone{border-radius:0px; width:580px;}
+		span{color: #4285f4;font: 16px/16px roboto-regular, arial, sans-serif; left: 110px;position: relative;top:-23px;}
+	</style>
+    </head>
+    <body>
+    <div id="top">
+	<img id="image" src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"><a class="btn btn-link" href="search.html">Google</a>
+    </div>
+    <div>
+	<p id="intro">Advanced Search
+	<hr>
+    </div>
+    <div id="box1">
+		<div id="grid">
+			<div id="grid1"><div class="grid-item" id=find>Find pages with...</div><br><div class="grid-item">all these words</div><div class="grid-item">this exact word or phrase</div><div class="grid-item">any of these words</div><div class="grid-item">none of these words</div></div>
+			<div id="grid2">
+				<div class="grid-item"><p><br></div>
+				<p>
+				<div class="grid-item">
+				<form action="https://google.com/search"> <input id="questionall" type="text" name="as_q" maxlength="20" class="form-control form-control-sm"></form>
+				</div>
+				<div class="grid-item">
+					<form action="https://google.com/search"><input  id="questionexact" type="text" name="as_epq" maxlength="20" class="form-control form-control-sm"></form>
+				</div>
+				<div class="grid-item">
+					<form action="https://google.com/search"><input  id="questionany" type="text" name="as_oq" maxlength="20" class="form-control form-control-sm"></form>
+				</div>
+				<div class="grid-item">
+					<form action="https://google.com/search"><input  id="questionnone" type="text" name="as_eq" maxlength="20" class="form-control form-control-sm"></form>
+				</div>
+			</div>
+		</div>
+    </div>

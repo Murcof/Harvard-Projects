@@ -1,0 +1,31 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    <h2>New Auction</h2>
+
+    {% if message %}
+        <div>{{ message }}</div>
+    {% endif %}
+
+    <div class="auctions_index">
+        <div class="side_bar"></div>
+        <div class="creation_form">
+            <form action="{% url 'create' %}" method="post">
+            {% csrf_token %}
+            Title: {{form.title}}<br>
+            Description: {{form.description}}<br>
+                <div class="creation_separate_items">
+                    <div class="creation_item">Category: {{form.category}}</div>
+                    <div class="creation_item">Initial Value: {{form.startind_bid}}</div>
+                </div>
+            <br>
+            Image Link (Optional): {{form.image_link}}
+            <br>
+            <p style="text-align:center"><input class="btn btn-primary" type="submit" value="Create Auction"></p>
+            </form>
+        </div>
+        <div class="side_bar"></div>
+
+
+{% endblock %}

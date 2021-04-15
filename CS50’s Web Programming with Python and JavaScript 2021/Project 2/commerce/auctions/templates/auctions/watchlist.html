@@ -1,0 +1,28 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Your Auction Watchlist</h2>
+    <div class="auctions_index">
+        <div class="side_bar"></div>
+        <div class="auctions_grid">
+            {% for auct in watchlist %}
+                <div class="index_auction_item">
+                    <img src="{{auct.image_link}}" class="auction_image"><br>
+                    <a href="auctions/{{auct.id}}">{{auct.title}}</a><br>
+                    {{auct.description}}<br>
+                    {% if auct.id in bids_reference %}
+                        {% for bid in bids %}
+                            {% if bid.auction.id == auct.id %}
+                                $ {{ bid.value }}
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        $ {{ auct.startind_bid }}
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="side_bar"></div>
+    </div>
+
+{% endblock %}
