@@ -1,0 +1,15 @@
+textarea {
+    min-height: 400px;
+}
+
+#show_emails{
+
+}
+
+.email_row{
+    display: grid;
+    padding: 5px;
+    grid-column-gap: 20px;
+    grid-row-gap: 10px;
+    grid-template-columns: 20px 100px 150px auto 100px;
+}
