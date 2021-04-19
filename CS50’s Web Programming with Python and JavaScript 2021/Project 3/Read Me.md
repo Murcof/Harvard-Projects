@@ -3,10 +3,10 @@ Hello!
 Here you can find the Project 3 of this course.
 
 
-* Youtube video of the project:* https://youtu.be/KSWFyBDAfMM
+* Youtube video of the project: * https://youtu.be/KSWFyBDAfMM
 
 
-* Specifications:* https://cs50.harvard.edu/web/2020/projects/3/mail/
+* Specifications: * https://cs50.harvard.edu/web/2020/projects/3/mail/
 
 **Send Mail: When a user submits the email composition form, add JavaScript code to actually send the email.**
 
