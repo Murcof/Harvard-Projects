@@ -2,7 +2,7 @@ Hello!
 
 Here you can find the Project 2 of this course.
 
-Youtube video of the project: https://youtu.be/g7ADrPMzm4Q
+Youtube video of the project: https://youtu.be/l5-jSiME63o
 
 
 Specifications: https://cs50.harvard.edu/web/2020/projects/2/commerce/
