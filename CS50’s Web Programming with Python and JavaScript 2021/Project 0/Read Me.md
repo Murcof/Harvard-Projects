@@ -12,7 +12,7 @@ Specification: https://cs50.harvard.edu/web/2020/projects/0/search/
 
 **Query Text. On the Google Search page, the user should be able to type in a query, click “Google Search”, and be taken to the Google search results for that page.**
 
-*Like Google’s own, your search bar should be centered with rounded corners. The search button should also be centered, and should be beneath the search bar.
+* Like Google’s own, your search bar should be centered with rounded corners. The search button should also be centered, and should be beneath the search bar.
 
 **Query Images. On the Google Image Search page, the user should be able to type in a query, click a search button, and be taken to the Google Image search results for that page.**
 
