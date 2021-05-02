@@ -19,11 +19,8 @@ def index(request):
                 "list": util.partial_search(form.__getitem__('q'))
             })
         else:
-            page_rendered = markdown2.markdown_path("entries\\{}.md".format(form.__getitem__('q')))
-            return render(request,'encyclopedia/page.html', {
-                "page": page_rendered,
-                "title": form.__getitem__('q')
-            })
+            title = str(form.__getitem__('q'))
+            return HttpResponseRedirect('wiki/{}'.format(title))
 
 
 def page(request, title):
