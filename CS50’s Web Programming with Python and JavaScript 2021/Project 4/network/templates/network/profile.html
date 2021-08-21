@@ -1,0 +1,93 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block script %}
+    <script src="{% static 'network/profile.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="index_grid">
+        <div></div>
+        <div class="posts_column">
+            <div class="profile_main_info">
+                <div id="user_photo">
+                    {% if profile_user.photo %}
+                        <img width="100" height="100" src="{{profile_user.photo.url}}">
+                    {% else %}
+                        <img width="100" height="100" src="{% static 'network/112-1128942_cronenberg-world-rick-and-morty-running-png.png' %}">
+                    {% endif %}
+                    <h4 class="profile_user_name" >{{ profile_user }}</h4>
+                    {% if user.is_authenticated %}
+                    {% if not profile_user == request.user %}
+                        {% if request.user.id in followers %}
+                            <p class="follow_unfollow_button">
+                                <button data-value="{{profile_user.id}}" id="unfollow_button" type="button" class="btn btn-secondary btn-sm">Unfollow</button>
+                                <button data-value="{{profile_user.id}}" id="follow_button" type="button" style="display: none" class="btn btn-outline-secondary btn-sm">Follow</button>
+                            </p>
+                        {% else %}
+                            <p class="follow_unfollow_button">
+                                <button data-value="{{profile_user.id}}" id="follow_button" type="button" class="btn btn-outline-secondary btn-sm">Follow</button>
+                                <button data-value="{{profile_user.id}}" id="unfollow_button" type="button" style="display: none" class="btn btn-secondary btn-sm">Unfollow</button>
+                            </p>
+                        {% endif %}
+                    {% endif %}
+                    {% endif %}
+                    <br>
+                </div>
+                <div style="margin-top: 1%">
+                    Followers: <b><p class="followers_count">{{ followers|length }}</p></b>
+                    Following: <b><p class="following_count">{{ following|length }}</p></b> <br> <hr>
+                </div>
+            </div>
+            {% for post in page_object %}
+                <div id="postid{{post.id}}" class="post">
+                    <div id="user_photo">
+                        {% if post.creator.photo %}
+                            <img width="50" height="50" src="{{post.creator.photo.url}}">
+                        {% else %}
+                            <img width="50" height="50" src="{% static 'network/112-1128942_cronenberg-world-rick-and-morty-running-png.png' %}">
+                        {% endif %}
+                    </div>
+                    <div>
+                        <a href="/profile/{{post.creator.id}}"><b>{{post.creator}}</b></a> at {{post.timestamp}} :
+                        {% if post.edited %}
+                            <span class="badge badge-pill badge-light">Edited</span>
+                        {% endif %}
+                        <br>
+                        <p class="post_content">{{post.content}}</p> <br>
+                        <p id="like_{{post.id}}" data-value="{{post.id}}" class="like_paragraph">
+                            {% if request.user in post.likers.all %}
+                                <img width="15" height="15" style="opacity: 1.0;" class="like_icon" id="like_icon_number_{{post.id}}" src="https://static.djangoproject.com/img/fundraising-heart.cd6bb84ffd33.svg">
+                            {% else %}
+                                {% if user.is_authenticated %}
+                                    <img width="15" height="15" style="opacity: 0.6;" class="unlike_icon" id="like_icon_number_{{post.id}}" src="https://static.djangoproject.com/img/fundraising-heart.cd6bb84ffd33.svg">
+                                {% else %}
+                                    <a href="{% url 'login' %}"><img width="15" height="15" style="opacity: 0.6;" class="heart_icon" src="https://static.djangoproject.com/img/fundraising-heart.cd6bb84ffd33.svg"></a>
+                                {% endif %}
+                            {% endif %}
+                        </p>
+                        <p id="like_counter_number_{{post.id}}" class="post_likers">{{ post.likers.all|length }}</p>
+                        {%if post.creator == request.user%}
+                            <p class="edit_button"><button type="button" data-value="{{post.id}}" class="btn btn-outline-dark btn-sm">Edit</button></p>
+                        {%endif%}
+                        <hr>
+                    </div>
+                </div>
+            {% endfor %}
+            <div id="paginator">
+                <nav aria-label="Paginator Navigation">
+                <ul class="pagination">
+                    {% if page_object.has_previous %}
+                        <li class="page-item"><a class="page-link" href="/profile/{{profile_user.id}}/{{page_object.previous_page_number}}">{{page_object.previous_page_number}}</a></li>
+                    {% endif %}
+                    <li class="page-item active"><a class="page-link" href="/profile/{{profile_user.id}}/{{page_number}}">{{page_number}}</a></li>
+                    {% if page_object.has_next %}
+                        <li class="page-item"><a class="page-link" href="/profile/{{profile_user.id}}/{{page_object.next_page_number}}">{{page_object.next_page_number}}</a></li>
+                    {% endif %}
+                </ul>
+                </nav>
+            </div>
+        </div>
+        <div></div>
+    </div>
+{% endblock %}

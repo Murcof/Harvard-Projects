@@ -1,0 +1,128 @@
+.index_grid {
+        background-color: #FFF9F9;
+        display: grid;
+        padding: 20px;
+        grid-column-gap: 20px;
+        grid-row-gap: 10px;
+        grid-template-columns: 18% 55% auto;
+        }
+
+.post {
+    display: grid;
+    padding: 5px;
+    grid-column-gap: 2px;
+    grid-row-gap: 2px;
+    grid-template-columns: 80px auto;
+}
+
+
+.post_content {
+    padding-left: 10px;
+    display:inline
+}
+
+.like_paragraph {
+    padding-left: 10px;
+    display:inline;
+    cursor: pointer;
+}
+
+.post_likers{
+    display: inline;
+}
+
+
+@keyframes reduce_opacity {
+    from {
+        opacity: 1.0;
+    } to {
+        opacity: 0.6;
+    }
+}
+
+@keyframes increase_opacity {
+    from {
+        opacity: 0.6;
+    } to {
+        opacity: 1.0;
+    }
+}
+
+.like_icon{
+    animation-name: reduce_opacity;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+
+.unlike_icon{
+    animation-name: increase_opacity;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+
+.edit_button{
+    float: right;
+    width: 15%;
+}
+
+.follow_unfollow_button{
+    float: right;
+    width: 15%;
+}
+
+.profile_user_name{
+    display:inline;
+    vertical-align: top;
+}
+
+#paginator{
+    width: 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.followers_count{
+    display:inline;
+}
+
+.following_count{
+    display:inline;
+}
+
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+        height: 0px;
+        line-height: 0px;
+    }
+    75% {
+        opacity: 1;
+        height: 100%;
+        line-height: 100%;
+    }
+    100% {
+        opacity: 1;
+        height: 100%;
+        line-height: 100%;
+    }
+}
+
+#hidden_new_post{
+    animation-name: appear;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+    animation-iteration-count: 1;
+}
+
+.login_grid {
+        background-color: #FFF9F9;
+        display: grid;
+        padding: 20px;
+        grid-column-gap: 20px;
+        grid-row-gap: 10px;
+        grid-template-columns: auto 25% auto;
+        }
