@@ -1,0 +1,22 @@
+{% extends "grewords/layout.html" %}
+{% load static %}
+
+{% block script %}
+    <script src="{% static 'grewords/index.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="index_grid">
+        <div></div>
+        <div>
+            <h5>Recent Words</h5>
+            <div class="recent_words_grid">
+            {% for recent_word in recent_words %}
+                <div><a href="/{{recent_word.id}}" class="recent_word_link">{{ recent_word.expression }}</a></div>
+            {% endfor %}
+            </div>
+                <button type="button" class="btn btn-dark btn-lg">Play</button>
+        </div>
+        <div></div>
+    </div>
+{% endblock %}

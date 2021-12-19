@@ -1,0 +1,29 @@
+{% extends "grewords/layout.html" %}
+{% load static %}
+
+{% block script %}
+    <script src="{% static 'grewords/word.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+<div class="wordpage_container">
+    <div></div>
+    <div class="word_info">
+        <h1 class="word_title">{{ word.expression }}</h1>
+        <p class="part_of_speech_paragraph">({{ word.get_part_of_speech_display }})</p>
+        <p>{{ word.description }}</p>
+        {% for syn in word.gre_synonym.values %}
+            Synonym: <a class="synonym_link" href="/{{syn.id}}">{{ syn.expression }}</a>
+        {% endfor %}
+    </div>
+    <div class="mobile_breakline"></div><div class="mobile_breakline"></div>
+    <div class="image_div">
+        <img class="art_image">
+        <p class="img_title"></p>
+        <p class="img_date"></p>
+        <br>
+        <p class="img_artist"></p>
+    </div>
+    <div></div>
+</div>
+{% endblock %}

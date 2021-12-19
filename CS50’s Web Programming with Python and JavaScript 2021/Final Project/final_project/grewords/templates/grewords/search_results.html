@@ -1,0 +1,22 @@
+{% extends "grewords/layout.html" %}
+{% load static %}
+
+{% block script %}
+    <script src="{% static 'grewords/aux_page.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+<div class="wordpage_container">
+    <div></div>
+    <div>
+        <h5>Search Results</h5>
+        <div class="recent_words_grid">
+            {% for word in results %}
+                <div><a href="/{{word.id}}" class="recent_word_link">{{ word.expression }}</a></div>
+            {% endfor %}
+        </div>
+    </div>
+    <div></div>
+    <div></div>
+</div>
+{% endblock %}

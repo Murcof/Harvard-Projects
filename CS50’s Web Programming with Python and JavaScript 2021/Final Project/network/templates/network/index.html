@@ -1,0 +1,87 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block script %}
+    <script src="{% static 'network/index.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="index_grid">
+        <div></div>
+        <div class="posts_column">
+            {% if user.is_authenticated %}
+            {% if new_post_form %}
+                <div class="newpost">
+                    <form class="form-group" id="newpostform" method="post">{% csrf_token %}
+                        <div id="newpostformcontent">{{new_post_form.content}}</div>
+                        <input type="submit" name="submit" class="btn btn-primary" value="Send">
+                    </form>
+                </div>
+            {% endif %}
+            {% endif %}
+            <div class="posts_column"></div>
+            <div id="hidden_new_post" style="display: none;">
+            <div id="user_photo"><img width="50" height="50"></div>
+                <div>
+                    <a href="/profile/{{request.user.id}}"><b>{{request.user}}</b></a> now:<br>
+                    <p class="post_content"></p> <br>
+                    <p id="like_{{post.id}}" data-value="{{post.id}}" class="like_paragraph">
+                        <img width="15" height="15" style="opacity: 0.6;" class="unlike_icon" id="like_icon_number_{{post.id}}" src="https://static.djangoproject.com/img/fundraising-heart.cd6bb84ffd33.svg">
+                    </p>
+                    <p class="post_likers">0</p>
+                    <p class="edit_button"><button type="button" data-value="{{post.id}}" class="btn btn-outline-dark btn-sm">Edit</button></p>
+                    <hr>
+                </div>
+            </div>
+            {% for post in page_object %}
+                <div id="postid{{post.id}}" class="post">
+                    <div id="user_photo">
+                        {% if post.creator.photo %}
+                            <img width="50" height="50" src="{{post.creator.photo.url}}">
+                        {% else %}
+                            <img width="50" height="50" src="{% static 'network/112-1128942_cronenberg-world-rick-and-morty-running-png.png' %}">
+                        {% endif %}
+                    </div>
+                    <div>
+                        <a href="/profile/{{post.creator.id}}"><b>{{post.creator}}</b></a> at {{post.timestamp}} :
+                        {% if post.edited %}
+                            <span class="badge badge-pill badge-light">Edited</span>
+                        {% endif %}
+                        <br>
+                        <p class="post_content">{{post.content}}</p> <br>
+                        <p id="like_{{post.id}}" data-value="{{post.id}}" class="like_paragraph">
+                            {% if request.user in post.likers.all %}
+                                <img width="15" height="15" style="opacity: 1.0;" class="like_icon" id="like_icon_number_{{post.id}}" src="https://static.djangoproject.com/img/fundraising-heart.cd6bb84ffd33.svg">
+                            {% else %}
+                                {% if user.is_authenticated %}
+                                    <img width="15" height="15" style="opacity: 0.6;" class="unlike_icon" id="like_icon_number_{{post.id}}" src="https://static.djangoproject.com/img/fundraising-heart.cd6bb84ffd33.svg">
+                                {% else %}
+                                    <a href="{% url 'login' %}"><img width="15" height="15" style="opacity: 0.6;" class="heart_icon" src="https://static.djangoproject.com/img/fundraising-heart.cd6bb84ffd33.svg"></a>
+                                {% endif %}
+                            {% endif %}
+                        </p>
+                        <p id="like_counter_number_{{post.id}}" class="post_likers">{{ post.likers.all|length }}</p>
+                        {%if post.creator == request.user%}
+                            <p class="edit_button"><button type="button" data-value="{{post.id}}" class="btn btn-outline-dark btn-sm">Edit</button></p>
+                        {%endif%}
+                        <hr>
+                    </div>
+                </div>
+            {% endfor %}
+            <div id="paginator">
+                <nav aria-label="Paginator Navigation">
+                <ul class="pagination">
+                    {% if page_object.has_previous %}
+                        <li class="page-item"><a class="page-link" href="{{page_object.previous_page_number}}">{{page_object.previous_page_number}}</a></li>
+                    {% endif %}
+                    <li class="page-item active"><a class="page-link" href="{{page_number}}">{{page_number}}</a></li>
+                    {% if page_object.has_next %}
+                        <li class="page-item"><a class="page-link" href="{{page_object.next_page_number}}">{{page_object.next_page_number}}</a></li>
+                    {% endif %}
+                </ul>
+                </nav>
+            </div>
+        </div>
+        <div></div>
+    </div>
+{% endblock %}
